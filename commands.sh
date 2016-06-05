@@ -67,7 +67,7 @@ echo "Sending the broadcast $* to $(wc -l count | sed 's/count//g')users."
 				break;
 			done
 			send_markdown_message "${USER[ID]}" "Hi *${USER[FIRST_NAME]}*
-"Im a bot programmed in _bash_
+Im a bot programmed in _bash_
 I include *inline* and other things.
 
 *Commands*
