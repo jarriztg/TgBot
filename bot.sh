@@ -295,7 +295,6 @@ process_client() {
 	MESSAGE=$(echo "$res" | egrep '\["result",0,"message","text"\]' | cut -f 2 | cut -d '"' -f 2)
 
 	# Owner
-
 	OWNER[ID]=$(OWNER)
 	
 	# User
