@@ -77,8 +77,8 @@ Incluyo *inline* entre otras cosas.
 *Comandos*
 */kick <ID>* expulsa a un usuario por ID
 
-Por el momento son todos mis comandos pero en un futuro habrÃ¡n mÃ¡s y posiblemente se abra un repositorio en _github_ con las funciones que incluye.
-*Funciones API* [aquÃ­](http://core.telegram.org/bots/api)"
+Por el momento son todos mis comandos pero en un futuro habrán más y posiblemente se abra un repositorio en _github_ con las funciones que incluye.
+*Funciones API* [aquí](http://core.telegram.org/bots/api)"
 			;;
 		'/salir')
 			send_markdown_message "${USER[ID]}" "*CHAT ABANDONADO*"
