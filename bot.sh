@@ -379,17 +379,20 @@ case "$1" in
 		for f in $(cat count);do send_message ${f//COUNT} "$*"; $sleep;done
 		;;
 	"start")
+		clear
 		tmux kill-session -t $ME&>/dev/null
 		tmux new-session -d -s $ME "bash $SCRIPT startbot" && echo -e '\e[0;32mBot started successfully.\e[0m'
 		echo "Tmux session name $ME" || echo -e '\e[0;31mAn error occurred while starting the bot. \e[0m'
 		send_markdown_message "$OWNER[ID]" "*Bot started*"
 		;;
 	"kill")
+		clear
 		tmux kill-session -t $ME &>/dev/null
 		send_markdown_message "$OWNER[ID]" "*Bot stopped*"
 		echo -e '\e[0;32mOK. Bot stopped successfully.\e[0m'
 		;;
 	"help")
+		clear
 		less README.md
 		;;
 	"attach")
