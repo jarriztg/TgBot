@@ -77,7 +77,7 @@ I include *inline* and other things.
 */github* get the opensource of this bot.
 
 Those are my commands for this moment, maybe, in a future, I will have most commands.
-[API Telegram](http://core.telegram.org/bots/api)"
+[API Telegram](http://core.telegram.org/bots/api) get"
 			;;
 		'/leavechat')
 			send_markdown_message "${OWNER[ID]}" "*CHAT LEAVED*"
