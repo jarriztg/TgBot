@@ -39,7 +39,7 @@ else
 				answer_inline_query "$iQUERY_ID" "cached_gif" "BQADBAADIwYAAmwsDAABlIia56QGP0YC"
 			fi
 			if [[ $iQUERY_MSG == github ]]; then
-				answer_inline_query "$iQUERY_ID" "article" "GitHub" "[Github](https://github.com/jarriztg/TgBot)
+				answer_inline_query "$iQUERY_ID" "article" "GitHub" "[Github](https://github.com/jarriztg/TgBot)"
 			fi
 		fi
 	fi
