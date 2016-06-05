@@ -86,6 +86,5 @@ Those are my commands for this moment, maybe, in a future, I will have most comm
     		'/github')
        			send_markdown_message "${USER[ID]}" " *Here you have*
        			[Github](https://github.com/jarriztg/TgBot)"
-			;;
 	esac
 fi
