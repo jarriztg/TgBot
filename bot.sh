@@ -6,6 +6,15 @@ if [ ! -f "JSON.sh/JSON.sh" ]; then
 	echo "JSON.sh has been downloaded. Proceeding."
 fi
 
+if [ ! -f "token" ]; then
+	clear
+	echo -e '\e[0;31mTOKEN MISSING.\e[0m'
+	echo -e '\e[0;31mPLEASE WRITE YOUR TOKEN HERE\e[0m'
+	read token
+	echo "$token" >> token
+fi
+
+
 source commands.sh source
 URL='https://api.telegram.org/bot'$TOKEN
 
@@ -371,7 +380,7 @@ case "$1" in
 		;;
 	"start")
 		tmux kill-session -t $ME&>/dev/null
-		tmux new-session -d -s $ME "bash $SCRIPT startbot" && echo -e '\e[0;32mBot started successfully. Tmux session name is $ME"\e[0m' || echo -e '\e[0;31mAn error occurred while starting the bot."\e[0m'
+		tmux new-session -d -s $ME "bash $SCRIPT startbot" && echo -e '\e[0;32mBot started successfully. Tmux session name is $ME \e[0m' || echo -e '\e[0;31mAn error occurred while starting the bot. \e[0m'
 		send_markdown_message "$OWNER[ID]" "*Bot started*"
 		;;
 	"kill")
