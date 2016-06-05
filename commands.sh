@@ -2,7 +2,7 @@
 if [ "$1" = "source" ];then
 	# Place the token in the token file
 	TOKEN=$(cat token)
-	OWNER=$'189041244'
+	OWNER=$'ID OWNER HERE'
 	# Set INLINE to 1 in order to receive inline queries.
 	# To enable this option in your bot, send the /setinline command to @BotFather.
 	INLINE=1
@@ -38,8 +38,8 @@ else
 			if [[ $iQUERY_MSG == gif ]]; then
 				answer_inline_query "$iQUERY_ID" "cached_gif" "BQADBAADIwYAAmwsDAABlIia56QGP0YC"
 			fi
-			if [[ $iQUERY_MSG == gay ]]; then
-				answer_inline_query "$iQUERY_ID" "article" "Mensaje" "*El de arriba es gay*"
+			if [[ $iQUERY_MSG == github ]]; then
+				answer_inline_query "$iQUERY_ID" "article" "GitHub" "[Github](https://github.com/jarriztg/TgBot)
 			fi
 		fi
 	fi
@@ -50,7 +50,7 @@ else
             unban_chat_member "${USER[ID]}" "$GETINPUT[ID]"
         fi
 
-   echo $MESSAGE | grep "^/enviar"
+   echo $MESSAGE | grep "^/broadcast"
          if [ $? == 0 ]; then
 echo "Sending the broadcast $* to $(wc -l count | sed 's/count//g')users."
 		[ $(wc -l count | sed 's/ count//g') -gt 300 ] && sleep="sleep 0.5"
@@ -59,33 +59,33 @@ echo "Sending the broadcast $* to $(wc -l count | sed 's/count//g')users."
     fi
     
 	case $MESSAGE in
-		'/restart')
-		
-			send_markdown_message "${USER[ID]}" "*Hola* Estoy programado en bash.."
-			;;
 		'/start')
-		while true
+			while true
 			do
-      			send_action "${USER[ID]}" "typing"
-		sleep 8s
-		break;
-		done
-			send_markdown_message "${USER[ID]}" "Hola *${USER[FIRST_NAME]}*
-Soy un bot en test programado en _bash_
-Incluyo *inline* entre otras cosas.
+      				send_action "${USER[ID]}" "typing"
+				sleep 8s
+				break;
+			done
+			send_markdown_message "${USER[ID]}" "Hi *${USER[FIRST_NAME]}*
+Im a bot programmed in _bash_
+I include *inline* and other things.
 
-*Comandos*
-*/kick <ID>* expulsa a un usuario por ID
+*Commands*
+*/kick <ID>* kick a member with the ID.
+*/leavechat* kick the own bot in any chat.
+*/broadcast <message>* send message to all members and groups.
+*/github* get the opensource of this bot.
 
-Por el momento son todos mis comandos pero en un futuro habrán más y posiblemente se abra un repositorio en _github_ con las funciones que incluye.
-*Funciones API* [aquí](http://core.telegram.org/bots/api)"
+Those are my commands for this moment, maybe, in a future, I will have most commands.
+[API Telegram](http://core.telegram.org/bots/api)"
 			;;
-		'/salir')
-			send_markdown_message "${USER[ID]}" "*CHAT ABANDONADO*"
-   leave_chat "${USER[ID]}"
-     ;;
-    '/google')
-       send_reply "${USER[ID]}" " `aqui` [Google](http://google.com)"
+		'/leavechat')
+			send_markdown_message "${OWNER[ID]}" "*CHAT LEAVED*"
+   			leave_chat "${USER[ID]}"
+     			;;
+    		'/github')
+       			send_markdown_message "${USER[ID]}" " *Here you have*
+       			[Github](https://github.com/jarriztg/TgBot)"
 			;;
 	esac
 fi
