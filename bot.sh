@@ -9,7 +9,7 @@ fi
 if [ ! -f "token" ]; then
 	clear
 	echo -e '\e[0;31mTOKEN MISSING.\e[0m'
-	echo -e '\e[0;31mPLEASE WRITE YOUR TOKEN HERE\e[0m'
+	echo -e "PLEASE WRITE YOUR TOKEN HERE\e[0m"
 	read token
 	echo "$token" >> token
 fi
@@ -380,7 +380,8 @@ case "$1" in
 		;;
 	"start")
 		tmux kill-session -t $ME&>/dev/null
-		tmux new-session -d -s $ME "bash $SCRIPT startbot" && echo -e '\e[0;32mBot started successfully. Tmux session name is $ME \e[0m' || echo -e '\e[0;31mAn error occurred while starting the bot. \e[0m'
+		tmux new-session -d -s $ME "bash $SCRIPT startbot" && echo -e '\e[0;32mBot started successfully.\e[0m'
+		echo "Tmux session name $ME" || echo -e '\e[0;31mAn error occurred while starting the bot. \e[0m'
 		send_markdown_message "$OWNER[ID]" "*Bot started*"
 		;;
 	"kill")
@@ -396,6 +397,6 @@ case "$1" in
 		;;
 	*)
 		echo -e '\e[0;31mBAD REQUEST\e[0m'
-		echo "Available arguments: outproc, count, broadcast, start, kill, help, attach"
+		echo -e '\e[0;31mAvailable arguments: outproc, count, broadcast, start, kill, help, attach\e[0m'
 		;;
 esac
