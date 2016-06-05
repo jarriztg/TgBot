@@ -95,11 +95,6 @@ send_markdown_message() {
 	res=$(curl -s "$MSG_URL" -d "chat_id=$1" -d "text=$2" -d "parse_mode=markdown" -d "disable_web_page_preview=true")
 }
 
-send_reply() {
-res=$(curl -s "$MSG_URL" -d "chat_id=$1" -d "text=$2" -d "parse_mode=markdown" -d "disable_web_page_preview=true" -d "reply_to_message_id=user_id")
-}
-
-
 kick_chat_member() {
 	res=$(curl -s "$KICK_URL" -F "chat_id=$1" -F "user_id=$2")
 }
@@ -376,13 +371,13 @@ case "$1" in
 		;;
 	"start")
 		tmux kill-session -t $ME&>/dev/null
-		tmux new-session -d -s $ME "bash $SCRIPT startbot" && echo "Bot started successfully. Tmux session name is $ME" || echo "An error occurred while starting the bot."
-		send_markdown_message "$OWNER[ID]" "*Bot iniciado*"
+		tmux new-session -d -s $ME "bash $SCRIPT startbot" && echo -e '\e[0;32mBot started successfully. Tmux session name is $ME"\e[0m' || echo -e '\e[0;31mAn error occurred while starting the bot."\e[0m'
+		send_markdown_message "$OWNER[ID]" "*Bot started*"
 		;;
 	"kill")
 		tmux kill-session -t $ME &>/dev/null
-		send_markdown_message "$OWNER[ID]" "*Bot detenido*"
-		echo "Bot detenido exitosamente. "
+		send_markdown_message "$OWNER[ID]" "*Bot stopped*"
+		echo -e '\e[0;32mOK. Bot stopped successfully.\e[0m'
 		;;
 	"help")
 		less README.md
@@ -391,6 +386,7 @@ case "$1" in
 		tmux attach -t $ME
 		;;
 	*)
+		echo -e '\e[0;31mBAD REQUEST\e[0m'
 		echo "Available arguments: outproc, count, broadcast, start, kill, help, attach"
 		;;
 esac
